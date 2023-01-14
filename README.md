@@ -4,16 +4,16 @@ Demonstrate the different ways of reading the version information from Windows
 
 ![Read Windows Version](https://github.com/Therena/VersionOfWindows/blob/master/Images/ReadWindowsVersion.png?raw=true)
 
-| API                           | Accuracy  | Deprecation | Documented        | Compatibility Mode | Manifest needed |
-|-------------------------------|-----------|-------------|-------------------|--------------------|-----------------|
-| GetVersion                    |           | Deprecated  | UM: yes / KM: no  | dependent          | yes             |
-| GetVersionEx                  |           | Deprecated  | UM: yes / KM: no  | dependent          | yes             |
-| Kernel32Library               | no        |             | UM: no  / KM: no  | independent        | no              |
-| RegistryCurrentVersion        | no        |             | UM: no  / KM: no  | independent        | no              |
-| RegistryCurrentVersionNumbers | undefined |             | UM: no  / KM: no  | independent        | no              |
-| RtlGetNtVersionNumbers        | undefined |             | UM: no  / KM: no  | independent        | no              |
-| RtlGetVersion                 |           |             | UM: no  / KM: yes | dependent          | no              |
-| VersionHelper                 |           |             | UM: yes / KM: no  | independent        | yes             |
+| API                           | Accuracy  | Deprecation | Documented   | Compatibility Mode | Manifest needed |
+|-------------------------------|-----------|-------------|--------------|--------------------|-----------------|
+| GetVersion                    |           | Deprecated  | User Mode    | dependent          | yes             |
+| GetVersionEx                  |           | Deprecated  | User Mode    | dependent          | yes             |
+| Kernel32Library               | no        |             | Undocumented | independent        | no              |
+| RegistryCurrentVersion        | no        |             | Undocumented | independent        | no              |
+| RegistryCurrentVersionNumbers | undefined |             | Undocumented | independent        | no              |
+| RtlGetNtVersionNumbers        | undefined |             | Undocumented | independent        | no              |
+| RtlGetVersion                 |           |             | Kernel Mode  | dependent          | no              |
+| VersionHelper                 |           |             | User Mode    | independent        | yes             |
 
 # API descriptions
 
