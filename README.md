@@ -2,13 +2,12 @@
 
 Demonstrate the different ways of reading the version information from Windows
 
-# Version read from the operating system
+## Version read from the operating system
 ![Read Windows Version](https://github.com/Therena/VersionOfWindows/blob/master/Images/ReadWindowsVersion.png?raw=true)
 
-System used:
 ![Read Windows Version](https://github.com/Therena/VersionOfWindows/blob/master/Images/CurrentWindowsInstalltion.png?raw=true)
 
-# Characteristic of the APIs
+## Characteristic of the APIs
 
 | API                           | Accuracy  | Deprecation | Documented   | Compatibility Mode | Manifest needed |
 |-------------------------------|-----------|-------------|--------------|--------------------|-----------------|
@@ -21,30 +20,30 @@ System used:
 | RtlGetVersion                 |           |             | Kernel Mode  | dependent          | no              |
 | VersionHelper                 |           |             | User Mode    | independent        | yes             |
 
-# API descriptions
+## API descriptions
 
-## API GetVersion
+### API GetVersion
 
 Microsoft documentation: [GetVersion on MSDN](https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getversion)
 
-## API GetVersionEx
+### API GetVersionEx
 
 Microsoft documentation: [GetVersionEx on MSDN](https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getversionexw)
 
-## API Kernel32Library
+### API Kernel32Library
 
-## API RegistryCurrentVersion
+### API RegistryCurrentVersion
 
-## API RegistryCurrentVersionNumbers
+### API RegistryCurrentVersionNumbers
 
-## API RtlGetNtVersionNumbers
+### API RtlGetNtVersionNumbers
 
-## API RtlGetVersion
+### API RtlGetVersion
 
 Microsoft documentation: [RtlGetVersion on MSDN](https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-rtlgetversion)
 
-## API VersionHelper
+### API VersionHelper
 
 Microsoft documentation: [VersionHelper on MSDN](https://learn.microsoft.com/en-us/windows/win32/sysinfo/version-helper-apis)
 
-# Windows Compatibility Mode 
+## Windows Compatibility Mode 
