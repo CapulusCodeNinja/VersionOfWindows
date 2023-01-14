@@ -9,14 +9,14 @@ Demonstrate the different ways of reading the version information from Windows
 
 | API                           | Accuracy  | Deprecation | Documented   | Compatibility Mode | Manifest needed |
 |-------------------------------|-----------|-------------|--------------|--------------------|-----------------|
-| GetVersion                    |           | Deprecated  | User Mode    | dependent          | yes             |
-| GetVersionEx                  |           | Deprecated  | User Mode    | dependent          | yes             |
-| Kernel32Library               | no        |             | Undocumented | independent        | no              |
-| RegistryCurrentVersion        | no        |             | Undocumented | independent        | no              |
-| RegistryCurrentVersionNumbers | undefined |             | Undocumented | independent        | no              |
-| RtlGetNtVersionNumbers        | undefined |             | Undocumented | independent        | no              |
-| RtlGetVersion                 |           |             | Kernel Mode  | dependent          | no              |
-| VersionHelper                 |           |             | User Mode    | independent        | yes             |
+| GetVersion                    | yes       | yes         | User Mode    | dependent          | yes             |
+| GetVersionEx                  | yes       | yes         | User Mode    | dependent          | yes             |
+| Kernel32Library               | no        | no          | Undocumented | independent        | no              |
+| RegistryCurrentVersion        | no        | no          | Undocumented | independent        | no              |
+| RegistryCurrentVersionNumbers | unknown   | no          | Undocumented | independent        | no              |
+| RtlGetNtVersionNumbers        | unknown   | no          | Undocumented | independent        | no              |
+| RtlGetVersion                 | yes       | no          | Kernel Mode  | dependent          | no              |
+| VersionHelper                 | yes       | no          | User Mode    | independent        | yes             |
 
 ## API descriptions
 
