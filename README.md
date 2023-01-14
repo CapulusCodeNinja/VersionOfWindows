@@ -2,7 +2,13 @@
 
 Demonstrate the different ways of reading the version information from Windows
 
+# Version read from the operating system
 ![Read Windows Version](https://github.com/Therena/VersionOfWindows/blob/master/Images/ReadWindowsVersion.png?raw=true)
+
+System used:
+![Read Windows Version](https://github.com/Therena/VersionOfWindows/blob/master/Images/CurrentWindowsInstalltion.png?raw=true)
+
+# Characteristic of the APIs
 
 | API                           | Accuracy  | Deprecation | Documented   | Compatibility Mode | Manifest needed |
 |-------------------------------|-----------|-------------|--------------|--------------------|-----------------|
