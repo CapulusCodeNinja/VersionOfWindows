@@ -4,16 +4,16 @@ Demonstrate the different ways of reading the version information from Windows
 
 ![Read Windows Version](https://github.com/Therena/VersionOfWindows/blob/master/Images/ReadWindowsVersion.png?raw=true)
 
-| API                           | Accuracy  | Deprecation | Dokumented for UM | Dokumented for KM | Compatibility Mode | Manifest needed |
-|-------------------------------|-----------|-------------|-------------------|-------------------|--------------------|-----------------|
-| GetVersion                    |           | Deprecated  | yes               | no                | dependent          | yes             |
-| GetVersionEx                  |           | Deprecated  | yes               | no                | dependent          | yes             |
-| Kernel32Library               | no        |             | no                | no                | independent        | no              |
-| RegistryCurrentVersion        | no        |             | no                | no                | independent        | no              |
-| RegistryCurrentVersionNumbers | undefined |             | no                | no                | independent        | no              |
-| RtlGetNtVersionNumbers        | undefined |             | no                | no                | independent        | no              |
-| RtlGetVersion                 |           |             | no                | yes               | dependent          | no              |
-| VersionHelper                 |           |             | yes               | no                | independent        | yes             |
+| API                           | Accuracy  | Deprecation | Documented        | Compatibility Mode | Manifest needed |
+|-------------------------------|-----------|-------------|-------------------|--------------------|-----------------|
+| GetVersion                    |           | Deprecated  | UM: yes / KM: no  | dependent          | yes             |
+| GetVersionEx                  |           | Deprecated  | UM: yes / KM: no  | dependent          | yes             |
+| Kernel32Library               | no        |             | UM: no  / KM: no  | independent        | no              |
+| RegistryCurrentVersion        | no        |             | UM: no  / KM: no  | independent        | no              |
+| RegistryCurrentVersionNumbers | undefined |             | UM: no  / KM: no  | independent        | no              |
+| RtlGetNtVersionNumbers        | undefined |             | UM: no  / KM: no  | independent        | no              |
+| RtlGetVersion                 |           |             | UM: no  / KM: yes | dependent          | no              |
+| VersionHelper                 |           |             | UM: yes / KM: no  | independent        | yes             |
 
 # API descriptions
 
