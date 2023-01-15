@@ -51,6 +51,22 @@ on the Windows Compatibility Mode settings for the application which Windows Ver
 
 ### API Kernel32Library
 
+```cpp
+#include <Windows.h>
+const auto bufferSize = GetFileVersionInfoSize(L"kernel32.dll", nullptr);
+
+const auto versionInformationBuffer = std::vector<byte>(bufferSize, 0);
+const auto bufferFilledSize = GetFileVersionInfo(L"kernel32.dll", 0, bufferSize, versionInformationBuffer.data());
+
+UINT versionLength = 0;
+const auto queryValueResult = VerQueryValue(versionInformationBuffer.data(), 
+    L"\\", 
+    reinterpret_cast<LPVOID*>(&m_Version), 
+    &versionLength);
+```
+Here the Windows Version is determined by getting the file version of the "kernel32.dll".This by it natural independent of any compatibility manifest or compatibility mode.
+Mostly that works well for the major and minor version of Windows, but for the build version part it delivers often not an accurate results.
+
 ### API RegistryCurrentVersion
 
 ### API RegistryCurrentVersionNumbers
