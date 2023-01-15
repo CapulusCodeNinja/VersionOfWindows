@@ -1,22 +1,25 @@
 # Read version record from Windows
 
-Demonstrate the different ways of reading the version information from Windows
+Demonstrate the different ways of reading the version information from Windows. <br/><br/>
+
+Getting the Windows version sound in first glance easier as it is. It depends on many configuration setting and also on how the appliction was build
+which version exact number you will get.
 
 ## Version read from the operating system
 ![Read Windows Version](https://github.com/Therena/VersionOfWindows/blob/master/Images/ReadWindowsVersion.png?raw=true)
 
 ## Characteristic of the APIs
 
-| API                           | Accuracy  | Deprecation | Documented   | Compatibility Mode | Compatibility Manifest |
-|-------------------------------|-----------|-------------|--------------|--------------------|------------------------|
-| GetVersion                    | yes       | yes         | User Mode    | dependent          | yes                    |
-| GetVersionEx                  | yes       | yes         | User Mode    | dependent          | yes                    |
-| Kernel32Library               | no        | no          | Undocumented | independent        | no                     |
-| RegistryCurrentVersion        | no        | no          | Undocumented | independent        | no                     |
-| RegistryCurrentVersionNumbers | unknown   | no          | Undocumented | independent        | no                     |
-| RtlGetNtVersionNumbers        | unknown   | no          | Undocumented | independent        | no                     |
-| RtlGetVersion                 | yes       | no          | Kernel Mode  | dependent          | no                     |
-| VersionHelper                 | yes       | no          | User Mode    | independent        | yes                    |
+| API                           | Accuracy  | Deprecated | Documented   | Compatibility Mode | Compatibility Manifest |
+|-------------------------------|-----------|------------|--------------|--------------------|------------------------|
+| GetVersion                    | yes       | yes        | User Mode    | dependent          | yes                    |
+| GetVersionEx                  | yes       | yes        | User Mode    | dependent          | yes                    |
+| Kernel32Library               | no        | no         | Undocumented | independent        | no                     |
+| RegistryCurrentVersion        | no        | no         | Undocumented | independent        | no                     |
+| RegistryCurrentVersionNumbers | unknown   | no         | Undocumented | independent        | no                     |
+| RtlGetNtVersionNumbers        | unknown   | no         | Undocumented | independent        | no                     |
+| RtlGetVersion                 | yes       | no         | Kernel Mode  | dependent          | no                     |
+| VersionHelper                 | yes       | no         | User Mode    | independent        | yes                    |
 
 ## API descriptions
 
@@ -86,8 +89,36 @@ This solution is getting the Windows version directly from the Registry. There i
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
 ```
 Unfortunately it seems to doesn't get updated anymore since the Windows version 6.3.
+This solution is independend of any compatibility manifest or compatibility mode.
 
 ### API RegistryCurrentVersionNumbers
+
+```cpp
+#include <Windows.h>
+const auto result = RegOpenKeyExW(HKEY_LOCAL_MACHINE,
+    LR"(SOFTWARE\Microsoft\Windows NT\CurrentVersion)", 0, KEY_READ, &currentVersionKey);
+
+uint32_t dataLength = 256;
+std::vector<byte> buffer(dataLength, L'\0');
+auto queryResult = RegQueryValueEx(currentVersionKey,
+    L"CurrentMajorVersionNumber", nullptr, nullptr, buffer.data(), reinterpret_cast<LPDWORD>(&dataLength));
+queryResult = RegQueryValueEx(currentVersionKey,
+    L"CurrentMinorVersionNumber", nullptr, nullptr, buffer.data(), reinterpret_cast<LPDWORD>(&dataLength));
+queryResult = RegQueryValueEx(currentVersionKey,
+    L"CurrentBuildNumber", nullptr, nullptr, buffer.data(), reinterpret_cast<LPDWORD>(&dataLength));
+```
+
+This solution is getting the Windows version directly from the Registry as well. There is the Windows version defined in these values:
+- CurrentMajorVersionNumber
+- CurrentMinorVersionNumber
+- CurrentBuildNumber
+The the following registry path:
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+```
+The version number seems to be always accurat but as these registry values are not defined in any documentation this cannot be guatenteed.
+This solution is independend of any compatibility manifest or compatibility mode.
+
 
 ### API RtlGetNtVersionNumbers
 
@@ -135,3 +166,7 @@ Microsoft documentation: [VersionHelper on MSDN](https://learn.microsoft.com/en-
     </compatibility>
 </assembly>
 ```
+
+## License
+
+[Apache 2.0](https://github.com/Therena/VersionOfWindows/blob/master/LICENSE)
