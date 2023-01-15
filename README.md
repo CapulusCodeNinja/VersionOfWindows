@@ -30,16 +30,16 @@ which version exact number you will get.
 <a name="Characteristic"></a>
 ## Characteristic of the APIs
 
-| API                           | Accuracy  | Deprecated | Documented   | Compatibility Mode | Compatibility Manifest |
-|-------------------------------|-----------|------------|--------------|--------------------|------------------------|
-| GetVersion                    | yes       | yes        | User Mode    | dependent          | yes                    |
-| GetVersionEx                  | yes       | yes        | User Mode    | dependent          | yes                    |
-| Kernel32Library               | no        | no         | Undocumented | independent        | no                     |
-| RegistryCurrentVersion        | no        | no         | Undocumented | independent        | no                     |
-| RegistryCurrentVersionNumbers | unknown   | no         | Undocumented | independent        | no                     |
-| RtlGetNtVersionNumbers        | unknown   | no         | Undocumented | independent        | no                     |
-| RtlGetVersion                 | yes       | no         | Kernel Mode  | dependent          | no                     |
-| VersionHelper                 | yes       | no         | User Mode    | independent        | yes                    |
+| API                           | Accuracy  | Deprecated | Documented  | Compatibility Mode | Compatibility Manifest |
+|-------------------------------|-----------|------------|-------------|--------------------|------------------------|
+| GetVersion                    | yes       | yes        | User Mode   | dependent          | yes                    |
+| GetVersionEx                  | yes       | yes        | User Mode   | dependent          | yes                    |
+| Kernel32Library               | no        | no         | no          | independent        | no                     |
+| RegistryCurrentVersion        | no        | no         | no          | independent        | no                     |
+| RegistryCurrentVersionNumbers | unknown   | no         | no          | independent        | no                     |
+| RtlGetNtVersionNumbers        | unknown   | no         | no          | independent        | no                     |
+| RtlGetVersion                 | yes       | no         | Kernel Mode | dependent          | no                     |
+| VersionHelper                 | yes       | no         | User Mode   | independent        | yes                    |
 
 <a name="APIDescriptions"></a>
 ## API descriptions
@@ -181,6 +181,15 @@ the compatibility mode (See section below) in case it is used in an user mode ap
 ### API VersionHelper
 
 Microsoft documentation: [VersionHelper on MSDN](https://learn.microsoft.com/en-us/windows/win32/sysinfo/version-helper-apis)
+
+```cpp
+#include <VersionHelpers.h>
+const auto isWindows10 = ::IsWindows10OrGreater();
+```
+
+This is an API which can help to determine the versions of Windows like Windows 10. It isn't able to provide the exact number of the version.
+In case the goal is only to differntiate Windows system that API works very accurate and is also the currently from Microsoft recommended API.
+The version helper API is independend of the compatibility manifest and compatibility mode.
 
 <a name="WindowsCompatibilityMode"></a>
 ## Windows Compatibility Mode
