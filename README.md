@@ -194,6 +194,11 @@ The version helper API is independend of the compatibility manifest and compatib
 <a name="WindowsCompatibilityMode"></a>
 ## Windows Compatibility Mode
 
+Microsoft documentation: [Make older apps or programs compatible with Windows](https://support.microsoft.com/en-us/windows/make-older-apps-or-programs-compatible-with-windows-783d6dd7-b439-bdb0-0490-54eea0f45938)
+
+Windows has the option to run applications in an lower Windows version. For example it can be defined that an application running on Windows 10 should run in a Windows 7 compatibility environment.
+This causes that some of the WinAPI will return the Windows 7 version number even if the application runs on Windows 10.
+
 <a name="CompatibilityManifest"></a>
 ## Compatibility Manifest
 
