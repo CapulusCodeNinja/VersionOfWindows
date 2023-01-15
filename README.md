@@ -199,6 +199,10 @@ The version helper API is independend of the compatibility manifest and compatib
 
 Microsoft documentation: [Comaptibility manifest on MSDN](https://learn.microsoft.com/en-us/windows/win32/sysinfo/targeting-your-application-at-windows-8-1)
 
+The compatibility manifest defines with which Windows version the application is compatible with. The manifest will let Windows provide a different set of options to the running application.
+The Windows version provided by some WinAPI are also different dependent on the compatibility manifest. For example in case the compatibility manifest doesn't
+contain the Windows 10, the manifest dependend APIs will provide the Windows 8.1 version number even if the application will run on Windows 10.
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
