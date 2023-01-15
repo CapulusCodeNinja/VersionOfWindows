@@ -199,6 +199,8 @@ Microsoft documentation: [Make older apps or programs compatible with Windows](h
 Windows has the option to run applications in an lower Windows version. For example it can be defined that an application running on Windows 10 should run in a Windows 7 compatibility environment.
 This causes that some of the WinAPI will return the Windows 7 version number even if the application runs on Windows 10.
 
+https://user-images.githubusercontent.com/18515874/212569524-4e96e82d-5e70-4a9e-a49d-7789fbcbc35e.mp4
+
 <a name="CompatibilityManifest"></a>
 ## Compatibility Manifest
 
@@ -244,4 +246,4 @@ contain the Windows 10, the manifest dependend APIs will provide the Windows 8.1
 <a name="License"></a>
 ## License
 
-[Apache 2.0](https://github.com/Therena/VersionOfWindows/blob/master/LICENSE)
+[MIT License](https://github.com/Therena/VersionOfWindows/blob/master/LICENSE.txt)
