@@ -53,6 +53,7 @@ on the Windows Compatibility Mode settings for the application which Windows Ver
 
 ```cpp
 #include <Windows.h>
+#pragma comment(lib, "version")
 const auto bufferSize = GetFileVersionInfoSize(L"kernel32.dll", nullptr);
 
 const auto versionInformationBuffer = std::vector<byte>(bufferSize, 0);
@@ -64,10 +65,27 @@ const auto queryValueResult = VerQueryValue(versionInformationBuffer.data(),
     reinterpret_cast<LPVOID*>(&m_Version), 
     &versionLength);
 ```
-Here the Windows Version is determined by getting the file version of the "kernel32.dll".This by it natural independent of any compatibility manifest or compatibility mode.
+Here the Windows version is determined by getting the file version of the "kernel32.dll".This by it natural independent of any compatibility manifest or compatibility mode.
 Mostly that works well for the major and minor version of Windows, but for the build version part it delivers often not an accurate results.
 
 ### API RegistryCurrentVersion
+
+```cpp
+#include <Windows.h>
+const auto result = RegOpenKeyExW(HKEY_LOCAL_MACHINE,
+    LR"(SOFTWARE\Microsoft\Windows NT\CurrentVersion)", 0, KEY_READ, &currentVersionKey);
+
+uint32_t dataLength = 256;
+std::vector<byte> buffer(dataLength, L'\0');
+const auto queryResult = RegQueryValueEx(currentVersionKey,
+    L"CurrentVersion", nullptr, nullptr, buffer.data(), reinterpret_cast<LPDWORD>(&dataLength));
+```
+
+This solution is getting the Windows version directly from the Registry. There is an "CurrentVersion" value in the registry path
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+```
+Unfortunately it seems to doesn't get updated anymore since the Windows version 6.3.
 
 ### API RegistryCurrentVersionNumbers
 
