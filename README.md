@@ -5,6 +5,23 @@ Demonstrate the different ways of reading the version information from Windows. 
 Getting the Windows version sound in first glance easier as it is. It depends on many configuration setting and also on how the appliction was build
 which version exact number you will get.
 
+## Table of contents
+
+- [Version read from the operating system](#Version read from the operating system)
+- [Characteristic of the APIs](#Characteristic of the APIs)
+- [API descriptions](#API descriptions)
+	- [API GetVersion](#API GetVersion)
+	- [API GetVersionEx](#API GetVersionEx)
+	- [API Kernel32Library](#API Kernel32Library)
+	- [API RegistryCurrentVersion](#API RegistryCurrentVersion)	
+	- [API RegistryCurrentVersionNumbers](#API RegistryCurrentVersionNumbers)
+	- [API RtlGetNtVersionNumbers](#API RtlGetNtVersionNumbers)
+	- [API RtlGetVersion](#API RtlGetVersion)
+	- [API VersionHelper](#API VersionHelper)
+- [Windows Compatibility Mode](#Windows Compatibility Mode)
+- [Compatibility Manifest](#Compatibility Manifest)
+- [License](#License)
+
 ## Version read from the operating system
 ![Read Windows Version](https://github.com/Therena/VersionOfWindows/blob/master/Images/ReadWindowsVersion.png?raw=true)
 
