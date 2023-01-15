@@ -1,9 +1,14 @@
 # Read version record from Windows
 
-Demonstrate the different ways of reading the version information from Windows. <br/><
+Demonstrate the different ways of reading the version information from Windows. <br/>
 
 Getting the Windows version sound in first glance easier as it is. It depends on many configuration setting and also on how the appliction was build
 which version exact number you will get.
+
+<a name="VersionRead"></a>
+## Version read from the operating system
+
+![Read Windows Version](https://github.com/Therena/VersionOfWindows/blob/master/Images/ReadWindowsVersion.png?raw=true)
 
 ## Table of contents
 
@@ -21,11 +26,6 @@ which version exact number you will get.
 - [Windows Compatibility Mode](#WindowsCompatibilityMode)
 - [Compatibility Manifest](#CompatibilityManifest)
 - [License](#License)
-
-<a name="VersionRead"></a>
-## Version read from the operating system
-
-![Read Windows Version](https://github.com/Therena/VersionOfWindows/blob/master/Images/ReadWindowsVersion.png?raw=true)
 
 <a name="Characteristic"></a>
 ## Characteristic of the APIs
@@ -148,6 +148,20 @@ This solution is independend of any compatibility manifest or compatibility mode
 <a name="APIRtlGetNtVersionNumbers"></a>
 ### API RtlGetNtVersionNumbers
 
+```cpp
+#include <Windows.h>
+typedef VOID(NTAPI* RtlGetNtVersionNumbersFunc)(LPDWORD pdwMajorVersion, LPDWORD pdwMinorVersion, LPDWORD pdwBuildNumber);
+const auto ntDll = GetModuleHandle(L"ntdll.dll");
+const auto rtlGetNtVersionNumbers = (RtlGetNtVersionNumbersFunc)GetProcAddress(m_NtDll, "RtlGetNtVersionNumbers");
+
+rtlGetNtVersionNumbers(reinterpret_cast<LPDWORD>(&mmajorVersion), 
+    reinterpret_cast<LPDWORD>(&minorVersion), 
+    reinterpret_cast<LPDWORD>(&buildNumber));
+```
+
+This API also seems to give an accurate version number which is independend of compatibility manifest and compatibility mode.
+Unfortunately it is completely undocumented for use in kernel and user mode.
+
 <a name="APIRtlGetVersion"></a>
 ### API RtlGetVersion
 
@@ -163,6 +177,8 @@ Microsoft documentation: [VersionHelper on MSDN](https://learn.microsoft.com/en-
 
 <a name="CompatibilityManifest"></a>
 ## Compatibility Manifest
+
+Microsoft documentation: [Comaptibility manifest on MSDN](https://learn.microsoft.com/en-us/windows/win32/sysinfo/targeting-your-application-at-windows-8-1)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
