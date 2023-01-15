@@ -37,6 +37,18 @@ on the Windows Compatibility Mode settings for the application which Windows Ver
 
 Microsoft documentation: [GetVersionEx on MSDN](https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getversionexw)
 
+```cpp
+#include <Windows.h>
+OSVERSIONINFOEX versionInformation{};
+SecureZeroMemory(&versionInformation, sizeof(OSVERSIONINFOEX));
+versionInformation.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
+GetVersionEx(reinterpret_cast<OSVERSIONINFO*>(&versionInformation));
+```
+
+The "GetVersionEx" WinAPI function returns the Windows version using an struct as out parameter. The parts of the version are stored as member variables in the struct.
+The function is deprecated since Windows 8.1 and requires an Compatibility Manifest added to the application (See below). Furthermore it depends
+on the Windows Compatibility Mode settings for the application which Windows Version will get returned (See section below).
+
 ### API Kernel32Library
 
 ### API RegistryCurrentVersion
@@ -84,7 +96,7 @@ Microsoft documentation: [VersionHelper on MSDN](https://learn.microsoft.com/en-
             <supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}" />
 
             <!-- Windows 10 -->
-            <!--<supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" />-->
+            <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" />
         </application>
     </compatibility>
 </assembly>
