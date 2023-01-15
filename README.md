@@ -8,7 +8,7 @@ which version exact number you will get.
 ## Table of contents
 
 - [Version read from the operating system](#Version read from the operating system)
-- [Characteristic of the APIs](#Characteristic of the APIs)
+- [Characteristic of the APIs](#Characteristic)
 - [API descriptions](#API descriptions)
 	- [API GetVersion](#API GetVersion)
 	- [API GetVersionEx](#API GetVersionEx)
@@ -23,8 +23,10 @@ which version exact number you will get.
 - [License](#License)
 
 ## Version read from the operating system
+
 ![Read Windows Version](https://github.com/Therena/VersionOfWindows/blob/master/Images/ReadWindowsVersion.png?raw=true)
 
+<a name="Characteristic"></a>
 ## Characteristic of the APIs
 
 | API                           | Accuracy  | Deprecated | Documented   | Compatibility Mode | Compatibility Manifest |
