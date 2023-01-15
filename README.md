@@ -167,6 +167,16 @@ Unfortunately it is completely undocumented for use in kernel and user mode.
 
 Microsoft documentation: [RtlGetVersion on MSDN](https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-rtlgetversion)
 
+```cpp
+#include <Windows.h>
+const auto ntDll = GetModuleHandle(L"ntdll.dll");
+const auto rtlVersion = (RtlGetVersionFunc)GetProcAddress(ntDll, "RtlGetVersion");
+const auto result = m_RtlVersion(&versionInformation);
+```
+
+The "RtlGetVersion" is documented for kernel mode but not for user mode code. It is able to provide an accurate version number but it is dependend on 
+the compatibility mode (See section below) in case it is used in an user mode application.
+
 <a name="APIVersionHelper"></a>
 ### API VersionHelper
 
