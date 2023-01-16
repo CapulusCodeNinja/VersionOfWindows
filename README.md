@@ -2,7 +2,7 @@
 
 Demonstrate the different ways of reading the version information from Windows. <br/>
 
-Getting the Windows version sound in first glance easier as it is. It depends on many configuration setting and also on how the appliction was build
+Getting the Windows version sound in first glance easier as it is. It depends on many configuration setting and also on how the application was build
 which version exact number you will get.
 
 <a name="VersionRead"></a>
@@ -138,6 +138,7 @@ This solution is getting the Windows version directly from the Registry as well.
 - CurrentMajorVersionNumber
 - CurrentMinorVersionNumber
 - CurrentBuildNumber
+
 The the following registry path:
 ```
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
